@@ -1,0 +1,2 @@
+# SymoblicateCrash-Script
+ 

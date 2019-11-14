@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+#Input File
+dsymFile=$1
+crashFileFolder=$2
+
+export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
+
+alias symbolicatecrash="/Applications/Xcode.app/Contents/SharedFrameworks/DVTFoundation.framework/Versions/A/Resources/symbolicatecrash"
+
+#Move to CrashFiles Folder
+cd $crashFileFolder
+
+i=0
+for x in *.crash;
+do
+	#Pass each crash file with DSYM file as parameter to symbolicateCrash command
+		echo "$x is processing..."
+        symbolicatecrash $x $dsymFile > Symbolicated_$x
+        i=$((i+1))
+done
